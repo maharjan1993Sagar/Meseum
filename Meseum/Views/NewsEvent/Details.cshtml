@@ -1,0 +1,55 @@
+﻿@model Meseum.Models.NewsEvent
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Location</h3>
+    </div>
+
+    <div style="patding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+
+            <tr>
+                <th>
+                   Title
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Category
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Category)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Description
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+                </td>
+            </tr>
+            <tr>
+
+                <th>
+                  Upload Date
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.UploadDate)
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Edit", "AddEdit", new {  id = Model.Id }) 
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

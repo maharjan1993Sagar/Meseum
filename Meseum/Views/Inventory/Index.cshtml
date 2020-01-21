@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Meseum.Models.Inventory>
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+            #myTable tr.header, #myTable tr:hover {
+                background-color: #f1f1f1;
+            }
+    </style>
+    <div class="card mb-4">
+        <div class="card-header py-3">
+            <h3 class="m-1 font-weight-bold center text-primary">Inventory</h3>
+        </div>
+        <div class="card-body">
+            <p>
+                <a asp-action="Add" class="btn btn-primary">Create New</a>
+            </p>
+            <div style="padding-top:10px;">
+                <table class="table table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                MadeBy
+                            </th>
+                            <th>
+                                Origin of
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MadeBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OriginOf)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id, @class = "btn btn-success" }, new { onclick = "return confirm('Are you sure you want to delete this item?');" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    @section Scripts {
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $("body div.myTable input");
+                var dataSrc = [];
+
+                var table = $("#myTable").DataTable({
+                    "columnDefs": [
+                        { "orderable": false, "targets": 3 }
+
+                    ],
+                    "pageLength": 50,
+
+
+                });
+            });
+
+
+
+
+        </script>
+    }
+

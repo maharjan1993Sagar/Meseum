@@ -1,0 +1,73 @@
+﻿@model Meseum.Models.Category
+
+@{
+    ViewData["Title"] = "AddEdit";
+}
+
+<div class="card">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Category</h3>
+    </div>
+    <div class="card-body">
+
+        @Html.HiddenFor(m => m.Id)
+        
+        <form asp-action="AddEditCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                @*<div class="col-md-4">
+            <div class="form-group">
+                <label></label>
+                <select asp-for="Name" asp-items=" ViewBag.Species" class="form-control">
+                    <option disabled selected>select</option>
+                </select>
+            </div>
+        </div>*@
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Short Detail</label>
+                        <input asp-for="ShortDetail" class="form-control" />
+                        <span asp-validation-for="ShortDetail" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Long Detail</label>
+                        <input asp-for="LongDetail" class="form-control" />
+                        <span asp-validation-for="LongDetail" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+                    <label>ShortName</label>
+                    <input asp-for="ShortName" class="form-control" />
+                    <span asp-validation-for="ShortName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <input type="submit" value="Create" class="btn btn-primary text-center" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
+</div>
+
+
+

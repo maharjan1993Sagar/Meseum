@@ -1,0 +1,54 @@
+﻿@model Meseum.Models.Location
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card mb-4 col-md-8">
+    <div class="card-header py-3">
+        <h3 class="m-1 font-weight-bold center text-primary">Location</h3>
+    </div>
+
+    <div style="patding-top:10px;">
+        <table class="table table-bordered" id="myTable">
+            <tr>
+                <th>
+                    Id
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Id)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Short Detail
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.ShortDetail)
+                </td>
+            </tr>
+            <tr>
+
+                <th>
+                  Long Detail
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LongDetail)
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Edit", "AddEditLocation", new {  id = Model.Id }) 
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
